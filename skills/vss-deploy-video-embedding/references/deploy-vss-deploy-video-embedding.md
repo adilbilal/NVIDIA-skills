@@ -3,7 +3,7 @@
 ## Container Image
 
 - **Image name** — `nvcr.io/nvidia/vss-core/vss-rt-embed`. The Compose service uses `${RTVI_EMBED_IMAGE}` and `${RTVI_EMBED_TAG}` so the image and tag are overridable per environment.
-- **Tag** — published VSS release tag (Compose default: `3.2.0`). Override `RTVI_EMBED_TAG` only when pinning a different published build.
+- **Tag** — published VSS release tag (Compose default: `3.2.1`). Override `RTVI_EMBED_TAG` only when pinning a different published build.
 - **Registry** — `nvcr.io`. Pulls require an authenticated session with NGC.
 - **NGC pull requirements** — `docker login nvcr.io` with `$oauthtoken` and a valid `NGC_API_KEY`. The same `NGC_API_KEY` must also be present in the container environment for model and asset access.
 - **Architecture support** — x86_64. The image is built for `linux/amd64`; aarch64 variants are not specified in the Compose service.
@@ -84,8 +84,8 @@ The named volumes `rtvi-hf-cache`, `rtvi-ngc-model-cache`, and `rtvi-triton-mode
 ## Dry Run
 
 ```bash
-docker compose -f rtvi-embed-docker-compose.yml --profile bp_developer_search_2d config --quiet
-docker compose -f rtvi-embed-docker-compose.yml --profile bp_developer_search_2d up --no-start
+docker compose -f rtvi-embed-docker-compose.yml --profile rtvi-embed config --quiet
+docker compose -f rtvi-embed-docker-compose.yml --profile rtvi-embed up --no-start
 ```
 
 ## Verify Deployment
@@ -117,7 +117,7 @@ For container-internal logs, check `/opt/nvidia/rtvi/log/rtvi/` when `RTVI_EMBED
 
 1. Update `RTVI_EMBED_IMAGE` and `RTVI_EMBED_TAG` to the target build.
 2. Pull the new image: `docker compose -f rtvi-embed-docker-compose.yml pull rtvi-embed`.
-3. Recreate the service: `docker compose -f rtvi-embed-docker-compose.yml --profile bp_developer_search_2d up -d rtvi-embed`.
+3. Recreate the service: `docker compose -f rtvi-embed-docker-compose.yml --profile rtvi-embed up -d rtvi-embed`.
 4. Watch `/v1/ready` until it returns 200; keep the named caches warm to avoid a full re-download.
 5. Roll back by re-pinning `RTVI_EMBED_TAG` to the previous build and repeating the pull and recreate steps. Named volumes persist across the swap, so the previous model cache and Triton repo are reused on rollback.
 

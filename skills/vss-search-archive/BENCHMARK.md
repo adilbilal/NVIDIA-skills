@@ -1,17 +1,19 @@
 # Evaluation Report
 
-Evaluation of the `vss-search-archive` skill before publication through NVSkills-Eval.
+Historical evaluation of `vss-search-archive` version 3.3.0 before publication
+through NVSkills-Eval. The current 3.4.0 skill and its six-step Harbor
+operational scenario have not been validated by this one-task run.
 
 This benchmark summarizes 3-Tier Evaluation from NVSkills-Eval results for the skill. The goal is to document whether the skill is safe, discoverable, effective, and useful for agents before it is published for broader workflow use.
 
 ## Evaluation Summary
 
-- Skill: `vss-search-archive`
-- Evaluation date: 2026-06-09
+- Skill: `vss-search-archive` 3.3.0
+- Evaluation date: 2026-07-10
 - NVSkills-Eval profile: `external`
 - Environment: `astra-sandbox`
 - Dataset: 1 evaluation tasks
-- Attempts per task: 2
+- Attempts per task: 1
 - Pass threshold: 50%
 - Overall verdict: PASS
 
@@ -54,31 +56,25 @@ Task composition is derived from the evaluation dataset when possible. Entries w
 
 | Dimension | Num | `claude-code` | `codex` |
 |---|---:|---:|---:|
-| Security | 2 | 100% (+0%) | 100% (+50%) |
-| Correctness | 2 | 95% (+70%) | 77% (+43%) |
-| Discoverability | 2 | 100% (+75%) | 71% (+21%) |
-| Effectiveness | 2 | 65% (+41%) | 51% (+27%) |
-| Efficiency | 2 | 94% (+72%) | 65% (+26%) |
+| Security | 1 | 100% (+0%) | 100% (+0%) |
+| Correctness | 1 | 100% (+75%) | 71% (+47%) |
+| Discoverability | 1 | 88% (+62%) | 84% (+48%) |
+| Effectiveness | 1 | 62% (+38%) | 50% (+26%) |
+| Efficiency | 1 | 71% (+48%) | 83% (+47%) |
 
 Score values show skill-assisted performance. Values in parentheses show uplift versus the no-skill baseline when baseline data is available.
 
 ## Tier 1: Static Validation Summary
 
-Tier 1 validation passed with observations. NVSkills-Eval ran 9 checks and found 2 total findings.
+Tier 1 validation passed with observations. NVSkills-Eval ran 1 checks and found 1 total findings.
 
 Top findings:
 
-- LOW QUALITY/quality_discoverability: Description very long (276 chars, recommend 50-150) (`skills/vss-search-archive/SKILL.md`)
 - LOW SCHEMA/author_format: Author must be of the form 'Name <email@host>' (`skills/vss-search-archive/SKILL.md`)
 
 ## Tier 2: Deduplication Summary
 
-Tier 2 validation passed. NVSkills-Eval ran 2 checks and found 0 total findings.
-
-Notable observations:
-
-- Context Deduplication: Collected 3 file(s)
-- Inter-Skill Deduplication: Parsed skill 'vss-search-archive': 276 char description
+This tier was not run or did not produce findings in this report.
 
 ## Publication Recommendation
 

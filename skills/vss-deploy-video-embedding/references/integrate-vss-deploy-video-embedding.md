@@ -67,7 +67,7 @@ Example: register and embed a live RTSP stream. Live-stream requests **require**
 |---|---|---|---|
 | `RTVI_EMBED_PORT` | Host port mapped to container `8000`. | (unset; `${RTVI_EMBED_PORT?}` fails fast) | Yes |
 | `RTVI_EMBED_IMAGE` | Container image. | `nvcr.io/nvidia/vss-core/vss-rt-embed` | No |
-| `RTVI_EMBED_TAG` | Container image tag. | `3.2.0` | No |
+| `RTVI_EMBED_TAG` | Container image tag. | `3.2.1` | No |
 | `RT_EMBED_DEVICE_ID` | GPU device id used by the Compose `device_ids` reservation. | `0` | No |
 | `RTVI_EMBED_NVIDIA_VISIBLE_DEVICES` | Maps to `NVIDIA_VISIBLE_DEVICES` inside the container. | `all` | No |
 | `RTVI_EMBED_NUM_GPUS` | Sets `NUM_GPUS` inside the container. | (unset) | No |
@@ -122,7 +122,7 @@ Example: register and embed a live RTSP stream. Live-stream requests **require**
 ## Known Integration Constraints
 
 - The Compose service hardcodes `container_name: vss-rtvi-embed`, so only one instance can run per Docker engine without overriding the name.
-- The service is profile-gated by `bp_developer_search_2d`; bring it up with `--profile bp_developer_search_2d` or include it in a Compose project that activates that profile.
+- The service is profile-gated by `rtvi-embed`; bring it up with `--profile rtvi-embed` or include it in a Compose project that activates that profile.
 - `${RTVI_EMBED_PORT?}` is a required-variable substitution; missing the variable fails the `compose config` parse.
 - First-boot model download requires reachable Hugging Face/NGC and a valid `NGC_API_KEY`. `HF_TOKEN` is optional but recommended — without it, anonymous Hugging Face pulls of `nvidia/Cosmos-Embed1-448p` can be rate-limited (HTTP 429), which leaves the service running but keeps `/v1/ready` from transitioning to 200.
 - The container runs as UID/GID `1001:1001`. Bind-mounted host directories must already be writable by that UID/GID; the service does not chown at startup.
@@ -149,10 +149,10 @@ export RTVI_EMBED_CLIP_STORAGE_CONTAINER_PATH="$(
 ```yaml
 services:
   rtvi-embed:
-    image: ${RTVI_EMBED_IMAGE:-nvcr.io/nvidia/vss-core/vss-rt-embed}:${RTVI_EMBED_TAG:-3.2.0}
+    image: ${RTVI_EMBED_IMAGE:-nvcr.io/nvidia/vss-core/vss-rt-embed}:${RTVI_EMBED_TAG:-3.2.1}
     container_name: vss-rtvi-embed
     user: "1001:1001"
-    profiles: ["bp_developer_search_2d"]
+    profiles: ["rtvi-embed"]
     deploy:
       resources:
         reservations:

@@ -1,5 +1,5 @@
 ## Description: <br>
-Use for VSS alert workflows — real-time monitoring, Alert-Bridge subscriptions, Slack notifications, incident queries, camera onboarding. Not for non-alert analytics. <br>
+Use for VSS alert workflows — real-time monitoring, Alert-Bridge subscriptions, Slack notifications, incident queries, camera onboarding. <br>
 
 This skill is ready for commercial/non-commercial use. <br>
 
@@ -9,21 +9,27 @@ NVIDIA <br>
 ### License/Terms of Use: <br>
 Apache 2.0 OR MIT <br>
 ## Use Case: <br>
-Developers and operators managing real-time video alert pipelines on NVIDIA VSS deployments, including monitoring, alert subscriptions, Slack notifications, and incident queries. <br>
+Developers and engineers operating NVIDIA VSS alert pipelines for real-time video monitoring, managing alert subscriptions, configuring Slack notifications, and querying detected incidents. <br>
 
 ### Deployment Geography for Use: <br>
 Global <br>
+
+## Requirements / Dependencies: <br>
+**Requires API Key or External Credential:** [Yes] <br>
+**Credential Type(s):** [API key] <br>
+
+Do not include secrets in prompts/logs/output; use least-privilege credentials; rotate keys as appropriate. <br>
 
 ## Known Risks and Mitigations: <br>
 Risk: Review before execution as proposals could introduce incorrect or misleading guidance into skills. <br>
 Mitigation: Review and scan skill before deployment. <br>
 
 ## Reference(s): <br>
-- [alert-notify.md](references/alert-notify.md) <br>
-- [alert-subscriptions.md](references/alert-subscriptions.md) <br>
-- [cv-verifier-prompts.md](references/cv-verifier-prompts.md) <br>
+- [Alert Subscriptions Reference](references/alert-subscriptions.md) <br>
+- [Alert Notify Reference](references/alert-notify.md) <br>
+- [CV Verifier Prompts Reference](references/cv-verifier-prompts.md) <br>
 - [NVIDIA VSS Documentation](https://docs.nvidia.com/vss/latest/index.html) <br>
-- [Video Search and Summarization GitHub](https://github.com/NVIDIA-AI-Blueprints/video-search-and-summarization) <br>
+- [GitHub Repository](https://github.com/NVIDIA-AI-Blueprints/video-search-and-summarization) <br>
 
 
 ## Skill Output: <br>
@@ -33,13 +39,13 @@ Mitigation: Review and scan skill before deployment. <br>
 **Other Properties Related to Output:** [None] <br>
 
 ## Evaluation Agents Used: <br>
-- claude-code <br>
-- codex <br>
+- `claude-code` <br>
+- `codex` <br>
 
 
 
 ## Evaluation Tasks: <br>
-14 evaluation tasks via NVSkills-Eval external profile in astra-sandbox environment. <br>
+7 evaluation tasks (6 positive skill-activation, 1 negative) via NVSkills-Eval external profile in astra-sandbox environment. <br>
 
 ## Evaluation Metrics Used: <br>
 Reported benchmark dimensions: <br>
@@ -63,11 +69,11 @@ Underlying evaluation signals used in this run: <br>
 ## Evaluation Results: <br>
 | Dimension | Num | `claude-code` | `codex` |
 |---|---:|---:|---:|
-| Security | 7 | 100% (+0%) | 79% (-7%) |
-| Correctness | 7 | 92% (+60%) | 95% (+50%) |
-| Discoverability | 7 | 96% (+57%) | 82% (+21%) |
-| Effectiveness | 7 | 66% (+49%) | 68% (+45%) |
-| Efficiency | 7 | 88% (+52%) | 72% (+16%) |
+| Security | 7 | 100% (+0%) | 71% (-29%) |
+| Correctness | 7 | 83% (+52%) | 89% (+55%) |
+| Discoverability | 7 | 98% (+55%) | 87% (+34%) |
+| Effectiveness | 7 | 60% (+40%) | 69% (+46%) |
+| Efficiency | 7 | 90% (+47%) | 81% (+23%) |
 
 ## Skill Version(s): <br>
 3.2.0 (source: frontmatter) <br>

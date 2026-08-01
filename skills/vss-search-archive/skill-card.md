@@ -1,44 +1,49 @@
 ## Description: <br>
-Use to run top-level VSS fusion search on archived video, or to ingest video files / RTSP streams for search. <br>
+Use this skill to run top-level VSS fusion search on archived video, or to ingest video files / RTSP streams for search. <br>
 
-This skill is ready for commercial/non-commercial use. <br>
+This skill is for demonstration purposes and not for production usage. <br>
 
 ## Owner
 NVIDIA <br>
 
 ### License/Terms of Use: <br>
-Apache-2.0 <br>
+Apache 2.0 OR MIT <br>
 ## Use Case: <br>
-Developers and engineers building video analytics applications who need to search archived video content by natural language, ingest video files, or register RTSP streams for vector-based search. <br>
+Developers and engineers who need to search archived video content using natural-language queries, ingest video files or RTSP streams for search indexing, and manage search-ingested video sources. <br>
 
 ### Deployment Geography for Use: <br>
 Global <br>
+
+## Requirements / Dependencies: <br>
+**Requires API Key or External Credential:** [Environment-dependent; No for ordinary local search] <br>
+**Credential Type(s):** [Deployment/operator credential when required] <br>
+
+Do not include secrets in prompts/logs/output; use least-privilege credentials; rotate keys as appropriate. <br>
 
 ## Known Risks and Mitigations: <br>
 Risk: Review before execution as proposals could introduce incorrect or misleading guidance into skills. <br>
 Mitigation: Review and scan skill before deployment. <br>
 
 ## Reference(s): <br>
-- [Discovery Modes](references/discovery_modes.md) <br>
-- [Troubleshooting](references/troubleshooting.md) <br>
-- [NVIDIA VSS Documentation](https://docs.nvidia.com/vss/latest/index.html) <br>
-- [GitHub Repository](https://github.com/NVIDIA-AI-Blueprints/video-search-and-summarization) <br>
+- [discovery_modes.md](references/discovery_modes.md) <br>
+- [troubleshooting.md](references/troubleshooting.md) <br>
+- [NVIDIA AI Blueprints: Video Search and Summarization](https://github.com/NVIDIA-AI-Blueprints/video-search-and-summarization) <br>
 
 
 ## Skill Output: <br>
 **Output Type(s):** [API Calls, Shell commands, Analysis] <br>
-**Output Format:** [Markdown with inline bash code blocks and structured search results] <br>
+**Output Format:** [Markdown with inline bash code blocks] <br>
 **Output Parameters:** [1D] <br>
-**Other Properties Related to Output:** [Search results include timestamped video segments ranked by similarity with optional VLM critic verification] <br>
+**Other Properties Related to Output:** [None] <br>
 
 ## Evaluation Agents Used: <br>
-- `claude-code` <br>
-- `codex` <br>
+- claude-code <br>
+- codex <br>
 
 
 
 ## Evaluation Tasks: <br>
-Evaluated against 1 evaluation task (1 positive skill-activation case) with 2 attempts per task using NVSkills-Eval external profile. <br>
+Evaluated against 1 evaluation task in the NVSkills-Eval external profile (astra-sandbox environment). <br>
 
 ## Evaluation Metrics Used: <br>
 Reported benchmark dimensions: <br>
@@ -62,14 +67,15 @@ Underlying evaluation signals used in this run: <br>
 ## Evaluation Results: <br>
 | Dimension | Num | `claude-code` | `codex` |
 |---|---:|---:|---:|
-| Security | 2 | 100% (+0%) | 100% (+50%) |
-| Correctness | 2 | 95% (+70%) | 77% (+43%) |
-| Discoverability | 2 | 100% (+75%) | 71% (+21%) |
-| Effectiveness | 2 | 65% (+41%) | 51% (+27%) |
-| Efficiency | 2 | 94% (+72%) | 65% (+26%) |
+| Security | 1 | 100% (+0%) | 100% (+0%) |
+| Correctness | 1 | 100% (+75%) | 71% (+47%) |
+| Discoverability | 1 | 88% (+62%) | 84% (+48%) |
+| Effectiveness | 1 | 62% (+38%) | 50% (+26%) |
+| Efficiency | 1 | 71% (+48%) | 83% (+47%) |
 
 ## Skill Version(s): <br>
-3.2.0 (source: frontmatter) <br>
+Current skill: 3.4.0. Published benchmark below: 3.3.0; it must not be treated
+as validation of the current operational workflow until rerun. <br>
 
 ## Ethical Considerations: <br>
 NVIDIA believes Trustworthy AI is a shared responsibility and we have established policies and practices to enable development for a wide array of AI applications. When downloaded or used in accordance with our terms of service, developers should work with their internal team to ensure this skill meets requirements for the relevant industry and use case and addresses unforeseen product misuse. <br>
